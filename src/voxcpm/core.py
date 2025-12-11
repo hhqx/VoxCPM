@@ -14,6 +14,7 @@ class VoxCPM:
             optimize: bool = True,
             lora_config: Optional[LoRAConfig] = None,
             lora_weights_path: Optional[str] = None,
+            device: Optional[str] = None,
         ):
         """Initialize VoxCPM TTS pipeline.
 
@@ -41,7 +42,7 @@ class VoxCPM:
             )
             print(f"Auto-created default LoRAConfig for loading weights from: {lora_weights_path}")
         
-        self.tts_model = VoxCPMModel.from_local(voxcpm_model_path, optimize=optimize, lora_config=lora_config)
+        self.tts_model = VoxCPMModel.from_local(voxcpm_model_path, optimize=optimize, lora_config=lora_config, device=device)
         
         # Load LoRA weights if path is provided
         if lora_weights_path is not None:
